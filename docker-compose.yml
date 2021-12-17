@@ -16,7 +16,7 @@ services:
        - db
      image: wordpress:5.8.2
      ports:
-       - "7001:80"
+       - "8001:80"
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: user
