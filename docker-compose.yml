@@ -1,0 +1,75 @@
+version: '3'
+services:
+   db:
+     image: mysql:8
+     volumes:
+       - db_data:/var/lib/mysql
+       - ./init:/docker-entrypoint-initdb.d
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: test
+       MYSQL_USER: user
+       MYSQL_PASSWORD: test
+
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:5.8.2
+     ports:
+       - "7001:80"
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: user
+       WORDPRESS_DB_PASSWORD: test
+       WORDPRESS_DB_NAME: wordpress
+     restart: always
+     volumes:
+       - wordpress:/var/www/html
+     labels:  
+       - "traefik.http.routers.wordpress.rule=Host(`wordpress.docker.localhost`)"
+
+   drupal:
+     image: drupal:9.3
+     ports:
+       - "8002:80"
+     environment:
+       DRUPAL_DB_HOST: db:3306
+       DRUPAL_DB-USER: user
+       DRUPAL_DB_PASSWORD: test
+       DRUPAL_DB_NAME: drupal
+     volumes:
+       - drupal_modules:/var/www/html/modules
+       - drupal_profiles:/var/www/html/profiles
+       - drupal_themes:/var/www/html/themes
+       - drupal_sites:/var/www/html/sites
+     labels:
+       - "traefik.http.routers.drupal.rule=Host(`drupal.docker.localhost`)"
+   
+   adminer:
+     image: adminer
+     restart: always
+     ports:
+       - 8181:8080
+    
+   reverse-proxy:
+     # The official v2 Traefik docker image
+     image: traefik:v2.5
+     # Enables the web UI and tells Traefik to listen to docker
+     command: --api.insecure=true --providers.docker
+     ports:
+       # The HTTP port
+       - "80:80"
+       # The Web UI (enabled by --api.insecure=true)
+       - "8080:8080"
+     volumes:
+       # So that Traefik can listen to the Docker events
+       - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+    wordpress:
+    drupal_modules:
+    drupal_profiles:
+    drupal_themes:
+    drupal_sites:
+    db_data: {}
+
