@@ -28,8 +28,8 @@ services:
      labels:
        - "traefik.http.routers.wordpress.rule=Host(`wordpress.docker.localhost`)"
        - "traefik.enable=true"
-       - "traefik.http.routers.wordpress.tls=true" 
-       - "traefik/http.routers.wordpress.tls.tls.domains[0].main=wordpress.docker.localhost" 
+       - "traefik.http.routers.wordpress.tls=true"
+       - "traefik/http.routers.wordpress.tls.tls.domains[0].main=wordpress.docker.localhost"
        - "traefik/http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.docker.localhost"
 
    drupal:
@@ -37,7 +37,7 @@ services:
      ports:
        - "8002:80"
      security_opt:
-      - no-new-privileges:true    
+      - no-new-privileges:true
      environment:
        DRUPAL_DB_HOST: db:3306
        DRUPAL_DB-USER: user
@@ -51,15 +51,21 @@ services:
      labels:
        - "traefik.http.routers.drupal.rule=Host(`drupal.docker.localhost`)"
        - "traefik.enable=true"
-       - "traefik.http.routers.drupal.tls=true" 
-       - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.docker.localhost" 
+       - "traefik.http.routers.drupal.tls=true"
+       - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.docker.localhost"
        - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.docker.localhost"
    adminer:
      image: adminer
      restart: always
      ports:
        - 8181:8080
-    
+     labels:  
+       - "traefik.http.routers.adminer.rule=Host(`adminer.docker.localhost`)"
+       - "traefik.enable=true"
+       - "traefik.http.routers.adminer.tls=true"
+       - "traefik/http.routers.adminer.tls.tls.domains[0].main=adminer.docker.localhost"
+       - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.docker.localhost"
+         #- "traefik.http.services.adminer.loadbalancer.server.port=8080"
    reverse-proxy:
      # The official v2 Traefik docker image
      image: traefik:v2.5
@@ -82,10 +88,10 @@ services:
        # On map la conf dynamique statique dans le conteneur
        - ./config.yml:/etc/traefik/config.yml:ro
        # On map les certificats dans le conteneur
-       - ./certs:/etc/certs:ro  
+       - ./certs:/etc/certs:ro
      labels:
        - "traefik.enable=true"
-       - "traefik.http.routers.traefik=true"  
+       - "traefik.http.routers.traefik=true"
 
 volumes:
     wordpress:
