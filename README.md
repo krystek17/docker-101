@@ -9,6 +9,7 @@ Enter your directory and use the following command:
 mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "docker.localhost" "*.docker.localhost" "domain.local" "*.domain.local"
 
 touch ./init/01.sql
+
 touch docker-compose.yml
 
 docker-compose up -d 
