@@ -11,4 +11,4 @@ touch docker-compose.yml
 docker-compose up -d 
 
 
-have fun ^
+have fun ^^
