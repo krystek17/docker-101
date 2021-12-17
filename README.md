@@ -20,4 +20,6 @@ https://wordpress.docker.localhost
 
 https://drupal.docker.localhost
 
+https://adminer.docker.localhost/ 
+  
 have fun ^^
