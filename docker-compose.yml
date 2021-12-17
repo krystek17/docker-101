@@ -65,7 +65,7 @@ services:
        - "traefik.http.routers.adminer.tls=true"
        - "traefik/http.routers.adminer.tls.tls.domains[0].main=adminer.docker.localhost"
        - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.docker.localhost"
-         #- "traefik.http.services.adminer.loadbalancer.server.port=8080"
+        
    reverse-proxy:
      # The official v2 Traefik docker image
      image: traefik:v2.5
