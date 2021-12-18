@@ -20,7 +20,7 @@ mkdir certs init
 
 mkcert -install
   
-mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "docker.localhost" "*.docker.localhost" "domain.local" "*.domain.local"
+sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
 
 touch ./init/01.sql
 
@@ -30,16 +30,16 @@ docker-compose up -d
 ```
 the links:
   
-https://wordpress.docker.localhost
+https://wordpress.localhost
 
-https://drupal.docker.localhost
+https://drupal.localhost
 
-https://adminer.docker.localhost/ 
+https://adminer.localhost/ 
 
 To install a dashboard import the homer's directory into your docker folder
 ```
  docker-compose up -d 
 ```  
- And now you have a dashboard at https://docker.localhost 
+ And now you have a dashboard at https://localhost 
   
 have fun ^^
