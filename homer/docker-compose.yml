@@ -16,8 +16,8 @@ services:
       - "traefik.http.routers.homer.rule=Host(`docker.localhost`)"
       - "traefik.enable=true"
       - "traefik.http.routers.homer.tls=true"
-        #- "traefik/http.routers.homer.tls.tls.domains[0].main=docker.localhost"
-      - "traefik/http.routers.homer.tls.tls.domains[0].sans=-*.docker.localhost"
+        #- "traefik/http.routers.homer.tls.tls.domains[0].main=localhost"
+      - "traefik/http.routers.homer.tls.tls.domains[0].sans=-*.localhost"
 
 networks:
   default:
