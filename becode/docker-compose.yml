@@ -26,11 +26,11 @@ services:
      volumes:
        - wordpress:/var/www/html
      labels:
-       - "traefik.http.routers.wordpress.rule=Host(`wordpress.docker.localhost`)"
+       - "traefik.http.routers.wordpress.rule=Host(`wordpress.localhost`)"
        - "traefik.enable=true"
        - "traefik.http.routers.wordpress.tls=true"
-       - "traefik/http.routers.wordpress.tls.tls.domains[0].main=wordpress.docker.localhost"
-       - "traefik/http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.docker.localhost"
+       - "traefik/http.routers.wordpress.tls.tls.domains[0].main=wordpress.localhost"
+       - "traefik/http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.localhost"
 
    drupal:
      image: drupal:9.3
@@ -49,22 +49,22 @@ services:
        - drupal_themes:/var/www/html/themes
        - drupal_sites:/var/www/html/sites
      labels:
-       - "traefik.http.routers.drupal.rule=Host(`drupal.docker.localhost`)"
+       - "traefik.http.routers.drupal.rule=Host(`drupal.localhost`)"
        - "traefik.enable=true"
        - "traefik.http.routers.drupal.tls=true"
-       - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.docker.localhost"
-       - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.docker.localhost"
+       - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.localhost"
+       - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.localhost"
    adminer:
      image: adminer
      restart: always
      ports:
        - 8181:8080
      labels:  
-       - "traefik.http.routers.adminer.rule=Host(`adminer.docker.localhost`)"
+       - "traefik.http.routers.adminer.rule=Host(`adminer.localhost`)"
        - "traefik.enable=true"
        - "traefik.http.routers.adminer.tls=true"
-       - "traefik/http.routers.adminer.tls.tls.domains[0].main=adminer.docker.localhost"
-       - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.docker.localhost"
+       - "traefik/http.routers.adminer.tls.tls.domains[0].main=adminer.localhost"
+       - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.localhost"
         
    reverse-proxy:
      # The official v2 Traefik docker image
