@@ -7,7 +7,7 @@ services:
     hostname: homer
     restart: always
     volumes:
-      #- ./config.yml:/www/config.yml
+      - ./config.yml:/www/config.yml
       - ./assets/:/www/assets
     environment:
       - UID=1000
