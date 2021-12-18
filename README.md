@@ -16,15 +16,10 @@ sudo mv mkcert /usr/local/bin/
 
 Enter your directory and use the following command:
 ```
-mkdir certs init
 
 mkcert -install
   
 sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
-
-touch ./init/01.sql
-
-touch docker-compose.yml
 
 docker-compose up -d 
 ```
