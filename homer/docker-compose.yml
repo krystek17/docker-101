@@ -1,0 +1,26 @@
+version: "2"
+services:
+
+  homer:
+    image: b4bz/homer:latest
+    container_name: homer
+    hostname: homer
+    restart: always
+    volumes:
+      #- ./config.yml:/www/config.yml
+      - ./assets/:/www/assets
+    environment:
+      - UID=1000
+      - GID=1001
+    labels:
+      - "traefik.http.routers.homer.rule=Host(`docker.localhost`)"
+      - "traefik.enable=true"
+      - "traefik.http.routers.homer.tls=true"
+        #- "traefik/http.routers.homer.tls.tls.domains[0].main=docker.localhost"
+      - "traefik/http.routers.homer.tls.tls.domains[0].sans=-*.docker.localhost"
+
+networks:
+  default:
+    external: true
+    name: $DOCKER_MY_NETWORK
+
