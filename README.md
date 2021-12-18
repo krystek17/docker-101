@@ -16,7 +16,6 @@ sudo mv mkcert /usr/local/bin/
 
 Enter your directory and use the following command:
 ```
-
 mkcert -install
   
 sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
