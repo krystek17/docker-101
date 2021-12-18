@@ -74,18 +74,18 @@ services:
       - name: "Worpress"
         logo: "assets/tools/wordpress.png"
         subtitle: "website"
-        url: "https://wordpress.localhost"
+        url: "https://wordpress.$DOMAIN"
       - name: "Drupal"
         logo: "/assets/tools/drupal.png"
         subtitle: "website"
-        url: "https://drupal.localhost"
+        url: "https://drupal.$DOMAIN"
   - name: "Monitoring"
     icon: "fab fa-watchman-monitoring"
     items:
       - name: "Adminer"
         logo: "/assets/tools/adminer.png"
         subtitle: "Database Management"
-        url: "https://adminer.localhost"
+        url: "https://adminer.$DOMAIN"
       - name: "Portainer"
         logo: "/assets/tools/portainer.png"
         subtitle: "Docker Manager"
@@ -93,5 +93,5 @@ services:
       - name: "Traefik"
         logo: "/assets/tools/traefik.png"
         subtitle:
-        url: "http://localhost:8080"
+        url: "https://traefik.localhost"
 

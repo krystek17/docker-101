@@ -1,13 +1,13 @@
 http:
   routers:
     traefik:
-      rule: "Host(`traefik.docker.localhost`)"
+      rule: "Host(`traefik.localhost`)"
       service: "api@internal"
       tls:
         domains:
-          - main: "docker.localhost"
+          - main: "localhost"
             sans:
-              - "*.docker.localhost"
+              - "*.localhost"
           - main: "domain.local"
             sans:
               - "*.domain.local"
