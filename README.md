@@ -1,6 +1,6 @@
 # docker-101
 
-first install "mkcert" to generate self-signed certificate.
+First install "mkcert" to generate self-signed certificate.
 
 On ubuntu/debian:
 ```
@@ -37,9 +37,9 @@ https://drupal.docker.localhost
 https://adminer.docker.localhost/ 
 
 To install a dashboard import the homer's directory into your docker folder
-
-  run docker-compose -d 
-  
+```
+ docker-compose up -d 
+```  
  And now you have a dashboard at https://docker.localhost 
   
 have fun ^^
