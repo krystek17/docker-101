@@ -32,9 +32,9 @@ docker-compose up -d
 ```
 Access your links:
   
-https://wordpress.localhost
+https://wordpress.localhost/
 
-https://drupal.localhost
+https://drupal.localhost/
 
 https://adminer.localhost/ 
 
@@ -44,7 +44,7 @@ To install a dashboard import the homer's directory into your docker folder
 ```
  docker-compose up -d 
 ```  
- And now you have a dashboard at https://localhost 
+ And now you have a dashboard at https://localhost/
  
  If you want to use portainer its the same, just download the portainer directory and run docker
  
