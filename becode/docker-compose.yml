@@ -66,6 +66,7 @@ services:
      container_name: traefik
      image: traefik:v2.5
      # Enables the web UI and tells Traefik to listen to docker
+     restart: always
      command: 
        - "--providers.docker"
      security_opt:
