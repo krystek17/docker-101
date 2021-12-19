@@ -13,8 +13,6 @@ services:
        MYSQL_PASSWORD: test
 
    wordpress:
-     depends_on:
-       - db
      container_name: wordpress
      image: wordpress:5.8.2
      environment:
