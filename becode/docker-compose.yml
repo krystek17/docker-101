@@ -34,8 +34,6 @@ services:
      container_name: drupal
      image: drupal:9.3
      restart: always
-     security_opt:
-      - no-new-privileges:true
      environment:
        DRUPAL_DB_HOST: db:3306
        DRUPAL_DB-USER: user
@@ -70,8 +68,6 @@ services:
      restart: always
      command: 
        - "--providers.docker"
-     security_opt:
-       - no-new-privileges:true
      ports:
        - "80:80"
        - "443:443"
