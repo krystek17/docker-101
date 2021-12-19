@@ -14,12 +14,20 @@ chmod a+x mkcert
 sudo mv mkcert /usr/local/bin/
 ```
 
-Enter your directory and use the following command:
-```
-mkcert -install
-  
-sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
+Download the becode directory and browse inside.
 
+create a directory for your certificates:
+```
+mkdir certs
+```
+generate your certifactes:
+```
+mkcert -install 
+
+sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
+```
+run docker:
+```
 docker-compose up -d 
 ```
 the links:
@@ -30,10 +38,14 @@ https://drupal.localhost
 
 https://adminer.localhost/ 
 
+https://traefik.localhost/
+
 To install a dashboard import the homer's directory into your docker folder
 ```
  docker-compose up -d 
 ```  
  And now you have a dashboard at https://localhost 
-  
+ 
+ if you want to use portainer its the same, just download the portainer directory and run docker
+ 
 have fun ^^
