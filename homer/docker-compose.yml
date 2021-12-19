@@ -2,8 +2,8 @@ version: "2"
 services:
 
   homer:
-    image: b4bz/homer:latest
     container_name: homer
+    image: b4bz/homer:latest
     hostname: homer
     restart: always
     volumes:

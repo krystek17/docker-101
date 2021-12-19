@@ -1,6 +1,7 @@
 version: '3'
 services:
    db:
+     container_name: mysql
      image: mysql:8
      volumes:
        - db_data:/var/lib/mysql
@@ -14,6 +15,7 @@ services:
    wordpress:
      depends_on:
        - db
+     container_name: wordpress
      image: wordpress:5.8.2
      environment:
        WORDPRESS_DB_HOST: db:3306
@@ -31,6 +33,7 @@ services:
        - "traefik/http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.$DOMAIN"
 
    drupal:
+     container_name: drupal
      image: drupal:9.3
      security_opt:
       - no-new-privileges:true
@@ -51,6 +54,7 @@ services:
        - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.$DOMAIN"
        - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.$DOMAIN"
    adminer:
+     container_name: adminer
      image: adminer
      restart: always
      labels:  
@@ -61,20 +65,15 @@ services:
        - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.$DOMAIN"
         
    reverse-proxy:
+     container_name: traefik
      image: traefik:v2.5
      # Enables the web UI and tells Traefik to listen to docker
      command: 
-       #- "--api.dashboard=true"
-       #- "--api.insecure=true"
        - "--providers.docker"
      security_opt:
        - no-new-privileges:true
      ports:
-       # The HTTP port
        - "80:80"
-       # The Web UI (enabled by --api.insecure=true)
-       - "8080:8080"
-       # The HTTPS port
        - "443:443"
      volumes:
        # So that Traefik can listen to the Docker events

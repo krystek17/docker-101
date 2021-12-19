@@ -89,7 +89,7 @@ services:
       - name: "Portainer"
         logo: "/assets/tools/portainer.png"
         subtitle: "Docker Manager"
-        url: "http://localhost:9000"
+        url: "https://portainer.localhost"
       - name: "Traefik"
         logo: "/assets/tools/traefik.png"
         subtitle:
