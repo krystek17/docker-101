@@ -15,8 +15,6 @@ services:
      depends_on:
        - db
      image: wordpress:5.8.2
-     ports:
-       - "8001:80"
      environment:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: user
@@ -26,16 +24,14 @@ services:
      volumes:
        - wordpress:/var/www/html
      labels:
-       - "traefik.http.routers.wordpress.rule=Host(`wordpress.localhost`)"
+       - "traefik.http.routers.wordpress.rule=Host(`wordpress.$DOMAIN`)"
        - "traefik.enable=true"
        - "traefik.http.routers.wordpress.tls=true"
-       - "traefik/http.routers.wordpress.tls.tls.domains[0].main=wordpress.localhost"
-       - "traefik/http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.localhost"
+       - "traefik/http.routers.wordpress.tls.tls.domains[0].main=wordpress.$DOMAIN"
+       - "traefik/http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.$DOMAIN"
 
    drupal:
      image: drupal:9.3
-     ports:
-       - "8002:80"
      security_opt:
       - no-new-privileges:true
      environment:
@@ -49,28 +45,27 @@ services:
        - drupal_themes:/var/www/html/themes
        - drupal_sites:/var/www/html/sites
      labels:
-       - "traefik.http.routers.drupal.rule=Host(`drupal.localhost`)"
+       - "traefik.http.routers.drupal.rule=Host(`drupal.$DOMAIN`)"
        - "traefik.enable=true"
        - "traefik.http.routers.drupal.tls=true"
-       - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.localhost"
-       - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.localhost"
+       - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.$DOMAIN"
+       - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.$DOMAIN"
    adminer:
      image: adminer
      restart: always
-     ports:
-       - 8181:8080
      labels:  
-       - "traefik.http.routers.adminer.rule=Host(`adminer.localhost`)"
+       - "traefik.http.routers.adminer.rule=Host(`adminer.$DOMAIN`)"
        - "traefik.enable=true"
        - "traefik.http.routers.adminer.tls=true"
-       - "traefik/http.routers.adminer.tls.tls.domains[0].main=adminer.localhost"
-       - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.localhost"
+       - "traefik/http.routers.adminer.tls.tls.domains[0].main=adminer.$DOMAIN"
+       - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.$DOMAIN"
         
    reverse-proxy:
      image: traefik:v2.5
      # Enables the web UI and tells Traefik to listen to docker
      command: 
-       - "--api.insecure=true"
+       #- "--api.dashboard=true"
+       #- "--api.insecure=true"
        - "--providers.docker"
      security_opt:
        - no-new-privileges:true
@@ -94,7 +89,6 @@ services:
        - "traefik.enable=true"
        - "traefik.http.routers.traefik=true"
        - "traefik.http.routers.api.rule=Host(`traefik.${DOMAIN}`)"
-       - "traefik.http.routers.api.entrypoints=web-secure"
        - "traefik.http.routers.api.tls.certresolver=certificato"
        - "traefik.http.routers.api.tls.domains[0].main=*.${DOMAIN}"
        - "traefik.http.routers.api.service=api@internal"
