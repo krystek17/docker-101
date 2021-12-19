@@ -33,6 +33,7 @@ services:
    drupal:
      container_name: drupal
      image: drupal:9.3
+     restart: always
      security_opt:
       - no-new-privileges:true
      environment:
