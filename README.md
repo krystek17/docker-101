@@ -48,6 +48,6 @@ To install a dashboard import the homer's directory into your docker folder
  
  If you want to use portainer its the same, just download the portainer directory and run docker-compose
  
- https://portainer.localhost
+ https://portainer.localhost/
  
 Have fun ^^
