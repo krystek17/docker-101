@@ -16,21 +16,21 @@ sudo mv mkcert /usr/local/bin/
 
 Download the becode directory and browse inside.
 
-create a directory for your certificates:
+Create a directory for your certificates:
 ```
 mkdir certs
 ```
-generate your certifactes:
+Generate your certifactes:
 ```
 mkcert -install 
 
 sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
 ```
-run docker:
+Run docker:
 ```
 docker-compose up -d 
 ```
-the links:
+Access your links:
   
 https://wordpress.localhost
 
@@ -46,6 +46,6 @@ To install a dashboard import the homer's directory into your docker folder
 ```  
  And now you have a dashboard at https://localhost 
  
- if you want to use portainer its the same, just download the portainer directory and run docker
+ If you want to use portainer its the same, just download the portainer directory and run docker
  
-have fun ^^
+Have fun ^^
