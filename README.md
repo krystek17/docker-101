@@ -13,6 +13,11 @@ mv mkcert-v*-linux-amd64 mkcert
 chmod a+x mkcert
 sudo mv mkcert /usr/local/bin/
 ```
+On archlinux:
+```
+sudo pacman -S nss
+sudo pacman -Syu mkcert
+```
 
 Download the becode directory and browse inside.
 
