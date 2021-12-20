@@ -20,13 +20,13 @@ Create a directory for your certificates:
 ```
 mkdir certs
 ```
-Generate your certifactes:
+Generate your certificates:
 ```
 mkcert -install 
 
 sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
 ```
-Run docker:
+Run:
 ```
 docker-compose up -d 
 ```
