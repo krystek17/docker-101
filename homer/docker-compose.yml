@@ -16,8 +16,8 @@ services:
       - "traefik.http.routers.homer.rule=Host(`$DOMAIN`)"
       - "traefik.enable=true"
       - "traefik.http.routers.homer.tls=true"
-      - "traefik.http.routers.homer.tls.tls.$DOMAINs[0].main=$DOMAIN"
-      - "traefik.http.routers.homer.tls.tls.$DOMAINs[0].sans=-*.$DOMAIN"
+      - "traefik/http.routers.homer.tls.tls.$DOMAINs[0].main=$DOMAIN"
+      - "traefik/http.routers.homer.tls.tls.$DOMAINs[0].sans=-*.$DOMAIN"
 
 networks:
   default:
