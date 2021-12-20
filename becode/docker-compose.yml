@@ -27,8 +27,8 @@ services:
        - "traefik.http.routers.wordpress.rule=Host(`wordpress.$DOMAIN`)"
        - "traefik.enable=true"
        - "traefik.http.routers.wordpress.tls=true"
-       - "traefik/http.routers.wordpress.tls.tls.domains[0].main=wordpress.$DOMAIN"
-       - "traefik/http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.$DOMAIN"
+       - "traefik.http.routers.wordpress.tls.tls.domains[0].main=wordpress.$DOMAIN"
+       - "traefik.http.routers.wordpress.tls.tls.domains[0].sans=wordpress-*.$DOMAIN"
 
    drupal:
      container_name: drupal
@@ -48,8 +48,8 @@ services:
        - "traefik.http.routers.drupal.rule=Host(`drupal.$DOMAIN`)"
        - "traefik.enable=true"
        - "traefik.http.routers.drupal.tls=true"
-       - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.$DOMAIN"
-       - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.$DOMAIN"
+       - "traefik.http.routers.drupal.tls.tls.domains[0].main=drupal.$DOMAIN"
+       - "traefik.http.routers.drupal.tls.tls.domains[0].sans=drupal-*.$DOMAIN"
    adminer:
      container_name: adminer
      image: adminer
@@ -58,8 +58,8 @@ services:
        - "traefik.http.routers.adminer.rule=Host(`adminer.$DOMAIN`)"
        - "traefik.enable=true"
        - "traefik.http.routers.adminer.tls=true"
-       - "traefik/http.routers.adminer.tls.tls.domains[0].main=adminer.$DOMAIN"
-       - "traefik/http.routers.adminer.tls.tls.domains[0].sans=adminer-*.$DOMAIN"
+       - "traefik.http.routers.adminer.tls.tls.domains[0].main=adminer.$DOMAIN"
+       - "traefik.http.routers.adminer.tls.tls.domains[0].sans=adminer-*.$DOMAIN"
         
    reverse-proxy:
      container_name: traefik
