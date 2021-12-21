@@ -13,6 +13,11 @@ mv mkcert-v*-linux-amd64 mkcert
 chmod a+x mkcert
 sudo mv mkcert /usr/local/bin/
 ```
+On archlinux:
+```
+sudo pacman -S nss
+sudo pacman -Syu mkcert
+```
 
 Download the becode directory and browse inside.
 
@@ -20,13 +25,13 @@ Create a directory for your certificates:
 ```
 mkdir certs
 ```
-Generate your certifactes:
+Generate your certificates:
 ```
 mkcert -install 
 
 sudo mkcert -cert-file certs/local-cert.pem -key-file certs/local-key.pem "localhost" "*.localhost"
 ```
-Run docker:
+Run:
 ```
 docker-compose up -d 
 ```
