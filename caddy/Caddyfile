@@ -1,0 +1,8 @@
+drupal.{$DOMAIN} {
+    reverse_proxy drupal:80
+}
+
+wordpress.{$DOMAIN} {
+    reverse_proxy wordpress:80
+}
+
