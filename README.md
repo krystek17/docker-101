@@ -1,6 +1,6 @@
 # Docker-101
 
-# Traefik
+## Traefik
 
 First install "mkcert" to generate self-signed certificate.
 
@@ -55,7 +55,7 @@ https://portainer.localhost/
  
 Have fun ^^
 
-# Caddy
+## Caddy
 
 Just:
 ```
