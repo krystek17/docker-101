@@ -1,5 +1,7 @@
 # Docker-101
 
+# Traefik
+
 First install "mkcert" to generate self-signed certificate.
 
 On ubuntu/debian:
@@ -19,7 +21,7 @@ sudo pacman -S nss
 sudo pacman -Syu mkcert
 ```
 
-Download the becode directory and browse inside.
+Download the traefik directory and browse inside.
 
 Create a directory for your certificates:
 ```
@@ -52,3 +54,19 @@ https://traefik.localhost/
 https://portainer.localhost/
  
 Have fun ^^
+
+# Caddy
+
+Just:
+```
+docker-compose up -d
+```
+the links:
+
+https://wordpress.localhost/
+
+https://drupal.localhost/
+
+https is not yet availble for adminer, portainer and homer
+
+WIP
