@@ -1,5 +1,21 @@
 # Docker-101
 
+## Caddy
+
+Just:
+```
+docker-compose up -d
+```
+the links:
+
+https://wordpress.localhost/
+
+https://drupal.localhost/
+
+https is not yet available for adminer, portainer and homer
+
+WIP
+
 ## Traefik
 
 First install "mkcert" to generate self-signed certificate.
@@ -55,18 +71,3 @@ https://portainer.localhost/
  
 Have fun ^^
 
-## Caddy
-
-Just:
-```
-docker-compose up -d
-```
-the links:
-
-https://wordpress.localhost/
-
-https://drupal.localhost/
-
-https is not yet availble for adminer, portainer and homer
-
-WIP
