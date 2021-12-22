@@ -2,7 +2,7 @@
 
 ## Caddy
 
-Just:
+Download the folder called "caddy" and browse inside and:
 ```
 docker-compose up -d
 ```
