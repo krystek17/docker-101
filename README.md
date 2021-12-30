@@ -276,13 +276,16 @@ services:
      volumes:
        - drupal_modules:/var/www/html/modules
        - drupal_profiles:/var/www/html/profiles
-       - drupal_themes:/var/www/      - "traefik.http.routers.drupal.rule=Host(`drupal.$DOMAIN`)"
+       - drupal_themes:/var/www/html/themes
+       - drupal_sites:/var/www/html/sites
+     labels:  
+       - "traefik.http.routers.drupal.rule=Host(`drupal.$DOMAIN`)"
        - "traefik.enable=true"
        - "traefik.http.routers.drupal.tls=true"
        - "traefik/http.routers.drupal.tls.tls.domains[0].main=drupal.$DOMAIN"
        - "traefik/http.routers.drupal.tls.tls.domains[0].sans=drupal-*.$DOMAIN
        
- reverse-proxy:
+   reverse-proxy:
      container_name: traefik
      image: traefik:v2.5
      # Enables the web UI and tells Traefik to listen to docker
