@@ -1,11 +1,18 @@
 # Docker-101
 
+Deploy a full stack with the folowing services:
+
+- Wordpress
+- Drupal
+- Database
+- Reverse Proxy
+
 ## Table of contents
 
 - [Certificates]
-- [Caddy]
-- [Nginx]
-- [Traefik]
+- [Caddy](#caddy)
+- [Nginx](#nginx)
+- [Traefik](traefik)
 
 ## Caddy
 
@@ -22,6 +29,8 @@ https://drupal.localhost/
 https is not yet available for adminer, portainer and homer
 
 WIP
+
+## Nginx
 
 ## Traefik
 
