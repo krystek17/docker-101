@@ -32,7 +32,7 @@ GRANT ALL ON `drupal`.* TO 'user'@'%';
   - [Middlewares](#middlewares)
 
 ## Certificates
-The certificates are needed only for traefik and nginx. Please follow the instruction corresponding to  your distro.
+The certificates are required for traefik and nginx. Please follow the instruction corresponding to  your distro.
 
 On ubuntu/debian:
 ```
