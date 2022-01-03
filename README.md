@@ -228,7 +228,7 @@ tls:
 ```
 The **tls.yml** will handle the ssl certificates and the routing of traefik dashboard. While the **traefik.yml** will handle the redirection from port 80 to port 443, the activation of the dashboard and it will defines docker as a provider. This set up allow to easily add new services by just adding labels to docker-compose. Last but not least you don't to restart traefik when a new service is detected. 
 
-and like with the other proxies you need a docker-compose.yml
+And like with the other proxies you need a docker-compose.yml.
 ```
 version: '3'
 services:
