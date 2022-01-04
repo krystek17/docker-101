@@ -28,30 +28,30 @@ services:
       - "9000:9000"
 
   db:
-     container_name: mysql
-     image: mysql:8
-     volumes:
+    container_name: mysql
+    image: mysql:8
+    volumes:
       - db_data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d
-     restart: always
-     environment:
+    restart: always
+    environment:
       MYSQL_ROOT_PASSWORD: test
       MYSQL_USER: user
       MYSQL_PASSWORD: test
 
   wordpress:
-     depends_on:
+    depends_on:
       - db
-     container_name: wordpress
-     image: wordpress:5.8.2
-     hostname: wordpress  
-     environment:
+    container_name: wordpress
+    image: wordpress:5.8.2
+    hostname: wordpress  
+    environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: user
       WORDPRESS_DB_PASSWORD: test
       WORDPRESS_DB_NAME: wordpress
-     restart: always
-     volumes:
+    restart: always
+    volumes:
       - wordpress:/var/www/html
 
   drupal:
@@ -67,10 +67,10 @@ services:
       DRUPAL_DB_PASSWORD: test
       DRUPAL_DB_NAME: drupal
     volumes:
-       - drupal_modules:/var/www/html/modules
-       - drupal_profiles:/var/www/html/profiles
-       - drupal_themes:/var/www/html/themes
-       - drupal_sites:/var/www/html/sites
+      - drupal_modules:/var/www/html/modules
+      - drupal_profiles:/var/www/html/profiles
+      - drupal_themes:/var/www/html/themes
+      - drupal_sites:/var/www/html/sites
   
   adminer:
     container_name: adminer
@@ -80,19 +80,19 @@ services:
     ports:
       - "8181:8181"
 
-   homer:
-     container_name: homer
-     image: b4bz/homer:latest
-     hostname: homer
-     restart: always
-     volumes:
-       - ./config.yml:/www/config.yml
-       - ./assets/:/www/assets
-     environment:
-       - UID=1000
-       - GID=1001
-     ports:
-       - "8080:8080"
+  homer:
+    container_name: homer
+    image: b4bz/homer:latest
+    hostname: homer
+    restart: always
+    volumes:
+      - ./config.yml:/www/config.yml
+      - ./assets/:/www/assets
+    environment:
+      - UID=1000
+      - GID=1001
+    ports:
+      - "8080:8080"
 
 
 volumes:
