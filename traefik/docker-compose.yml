@@ -84,6 +84,8 @@ services:
        - ./tls.yml:/etc/traefik/tls.yml:ro
        # self-signed certificate
        - ./certs:/etc/certs:ro
+       # htpasswd
+       - ./users_credentials:/users_credentials:ro
      labels:
        - "traefik.enable=true"
        - "traefik.http.routers.traefik=true"
@@ -107,7 +109,6 @@ services:
        - "traefik.http.routers.frontend.service=frontend"
        - "traefik.http.routers.frontend.tls.certresolver=leresolver"
 
-         
 
    homer:
      container_name: homer
@@ -126,7 +127,8 @@ services:
        - "traefik.http.routers.homer.tls=true"
        - "traefik/http.routers.homer.tls.tls.$DOMAINs[0].main=$DOMAIN"
        - "traefik/http.routers.homer.tls.tls.$DOMAINs[0].sans=-*.$DOMAIN"
-
+         #- "traefik.http.routers.homer.middlewares=auth-middleware"
+         #- "traefik.http.middlewares.auth-middleware.basicauth.usersfile=/users_credentials"
 
 volumes:
     wordpress:

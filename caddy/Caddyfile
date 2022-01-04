@@ -14,6 +14,3 @@ adminer.{$DOMAIN} {
     reverse_proxy adminer:8080
 }
 
-homer.{$DOMAIN} {
-    reverse_proxy homer:8080
-}
