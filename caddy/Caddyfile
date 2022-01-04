@@ -11,7 +11,7 @@ portainer.{$DOMAIN} {
 }	
 
 adminer.{$DOMAIN} {
-    reverse_proxy adminer:8181
+    reverse_proxy adminer:8080
 }
 
 homer.{$DOMAIN} {

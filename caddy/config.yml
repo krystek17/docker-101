@@ -90,8 +90,4 @@ services:
         logo: "/assets/tools/portainer.png"
         subtitle: "Docker Manager"
         url: "https://portainer.localhost"
-      - name: "Traefik"
-        logo: "/assets/tools/traefik.png"
-        subtitle:
-        url: "https://traefik.localhost"
 
