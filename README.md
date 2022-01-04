@@ -338,4 +338,28 @@ Https is also available for homer, adminer and portainer, please refer to traefi
 **[`^        back to top        ^`](#)**
 ### Middlewares
 
+This is a basic authentification using [htpasswd](https://hostingcanada.org/htpasswd-generator/):
+
+- create a file `credentials`, in this this example de password is `admin`:
+```
+admin:$2y$10$ocoMnzD3D0V86vPg5zWeA./oDTTxqf.zpHfzEE4R4VwIl1CAJaSWa
+```
+- add this fil to you docker-compose.yml
+```
+reverse-proxy:
+     
+     volumes:
+       # authentification
+       - ./credentials:/credentials:ro
+     
+```
+- add the followings labels to any of your container:
+```
+      - traefik.http.routers.<container_name>.middlewares=auth-middleware
+      - traefik.http.middlewares.auth-middleware.basicauth.usersfile=/users_credentials
+ ```
+ Don't forget to replace `<container_name> by the name of your container.
+ 
+ Ans that's it
+      
 **[`^        back to top        ^`](#)**
