@@ -340,7 +340,7 @@ Https is also available for homer, adminer and portainer, please refer to traefi
 
 This is a basic authentification using [htpasswd](https://hostingcanada.org/htpasswd-generator/):
 
-- create a file `credentials`, in this this example de password is `admin`:
+- create a file `credentials`, in this this example the password is `admin`:
 ```
 admin:$2y$10$ocoMnzD3D0V86vPg5zWeA./oDTTxqf.zpHfzEE4R4VwIl1CAJaSWa
 ```
