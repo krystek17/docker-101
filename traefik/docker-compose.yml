@@ -94,7 +94,6 @@ services:
        - "traefik.http.routers.api.tls.domains[0].main=*.${DOMAIN}"
        - "traefik.http.routers.api.service=api@internal"
 
-         
    portainer:
      container_name: portainer
      image: portainer/portainer-ce:2.11.0
@@ -108,27 +107,6 @@ services:
        - "traefik.http.services.frontend.loadbalancer.server.port=9000"
        - "traefik.http.routers.frontend.service=frontend"
        - "traefik.http.routers.frontend.tls.certresolver=leresolver"
-
-
-   homer:
-     container_name: homer
-     image: b4bz/homer:latest
-     hostname: homer
-     restart: always
-     volumes:
-       - ./config.yml:/www/config.yml
-       - ./assets/:/www/assets
-     environment:
-       - UID=1000
-       - GID=1001
-     labels:
-       - "traefik.http.routers.homer.rule=Host(`$DOMAIN`)"
-       - "traefik.enable=true"
-       - "traefik.http.routers.homer.tls=true"
-       - "traefik/http.routers.homer.tls.tls.$DOMAINs[0].main=$DOMAIN"
-       - "traefik/http.routers.homer.tls.tls.$DOMAINs[0].sans=-*.$DOMAIN"
-         #- "traefik.http.routers.homer.middlewares=auth-middleware"
-         #- "traefik.http.middlewares.auth-middleware.basicauth.usersfile=/users_credentials"
 
 volumes:
     wordpress:
