@@ -1,6 +1,6 @@
 # Docker-101
 
-Deploy a full stack with the folowing services:
+Deploy a full stack with the following services:
 
 - Wordpress
 - Drupal
