@@ -78,7 +78,23 @@ services:
     image: adminer
     restart: always
     ports:
-      - "8080:8080"
+      - "8181:8181"
+
+   homer:
+     container_name: homer
+     image: b4bz/homer:latest
+     hostname: homer
+     restart: always
+     volumes:
+       - ./config.yml:/www/config.yml
+       - ./assets/:/www/assets
+     environment:
+       - UID=1000
+       - GID=1001
+     ports:
+       - "8080:8080"
+
+
 volumes:
     wordpress:
     drupal_modules:
