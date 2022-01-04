@@ -27,6 +27,7 @@ GRANT ALL ON `drupal`.* TO 'user'@'%';
 
 - [Certificates](#certificates)
 - [Caddy](#caddy)
+  - [Authentification](#authentification)
 - [Nginx](#nginx)
 - [Traefik](#traefik)
   - [Middlewares](#middlewares)
@@ -162,6 +163,19 @@ the links:
 https://wordpress.localhost/
 
 https://drupal.localhost/
+
+### Authentification
+Caddy can enable basic authentification, which can be used to protect directories and files with a username and hashed password.
+We are going to use [bcrypt](https://www.devglan.com/online-tools/bcrypt-hash-generator) for hash algorithmn and use [base64](https://www.base64encode.org/).
+Here the password is `admin`:
+```
+<subdomain>.{$DOMAIN} {
+    reverse_proxy <service>:80
+    basicauth {
+        admin JDJhJDA4JEtHUk44YmpSTm9oZGRHVzZNS0FWV2VGVzQwZXYxT1dCREVGdFBoZ2h2MzdwaDFYeUwyL2hT
+    }
+}
+```
 
 **[`^        back to top        ^`](#)**
 
