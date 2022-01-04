@@ -78,18 +78,6 @@ wordpress.{$DOMAIN} {
     reverse_proxy wordpress:80
 }
 
-portainer.{$DOMAIN} {
-    reverse_proxy portainer:9000
-}	
-
-adminer.{$DOMAIN} {
-    reverse_proxy adminer:8080
-}
-
-homer.{$DOMAIN} {
-    reverse_proxy homer:8080
-}
-
 ```
 docker-compose.yml :
 ```
