@@ -100,7 +100,7 @@ services:
       - ./data:/data
       - ./config:/config
 
-db:
+  db:
      container_name: mysql
      image: mysql:8
      volumes:
