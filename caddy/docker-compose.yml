@@ -1,3 +1,4 @@
+---
 version: "3.7"
 services:
 
@@ -23,7 +24,7 @@ services:
     hostname: portainer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./portainer_data:/data    
+      - ./portainer_data:/data
     ports:
       - "9000:9000"
 
@@ -44,7 +45,7 @@ services:
       - db
     container_name: wordpress
     image: wordpress:5.8.2
-    hostname: wordpress  
+    hostname: wordpress
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: user
@@ -71,7 +72,7 @@ services:
       - drupal_profiles:/var/www/html/profiles
       - drupal_themes:/var/www/html/themes
       - drupal_sites:/var/www/html/sites
-  
+
   adminer:
     container_name: adminer
     hostname: adminer
@@ -82,10 +83,9 @@ services:
 
 
 volumes:
-    wordpress:
-    drupal_modules:
-    drupal_profiles:
-    drupal_themes:
-    drupal_sites:
-    db_data: {}
-
+  wordpress:
+  drupal_modules:
+  drupal_profiles:
+  drupal_themes:
+  drupal_sites:
+  db_data: {}
