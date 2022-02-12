@@ -81,7 +81,7 @@ wordpress.{$DOMAIN} {
 
 ```
 docker-compose.yml :
-```
+```yml
 version: "3.7"
 services:
 
@@ -186,7 +186,7 @@ WIP
 ## Traefik
 
 First create a traefik.yml for you static configuration:
-```
+```yml
 global:
   sendAnonymousUsage: false
 
@@ -220,7 +220,7 @@ entryPoints:
     address: ":443"
 ```
 Then a tls.yml
-```
+```yml
 http:
   routers:
     traefik:
@@ -243,7 +243,7 @@ tls:
 The **tls.yml** will handle the ssl certificates and the routing of traefik dashboard. While the **traefik.yml** will handle the redirection from port 80 to port 443, the activation of the dashboard and it will defines docker as a provider. This set up allow to easily add new services by just adding labels to docker-compose. Last but not least you don't to restart traefik when a new service is detected. 
 
 And like with the other proxies you need a docker-compose.yml.
-```
+```yml
 version: '3'
 services:
    db:
@@ -359,7 +359,7 @@ This is a basic authentification using [htpasswd](https://hostingcanada.org/htpa
 admin:$2y$10$ocoMnzD3D0V86vPg5zWeA./oDTTxqf.zpHfzEE4R4VwIl1CAJaSWa
 ```
 - add this fil to you docker-compose.yml
-```
+```yml
 reverse-proxy:
      
      volumes:
